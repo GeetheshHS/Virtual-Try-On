@@ -60,7 +60,7 @@ def generate_clothing_mask(person_image: Image.Image, category: str = "upper", p
     # Edge dilation (smoothing & overlap margin for realistic diffusion borders)
     # Using OpenCV to dilate the mask edges by a small margin
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
-    dilated_mask = cv2.dilate(binary_mask, kernel, iterations=1)
+    dilated_mask = cv2.dilate(binary_mask, kernel, iterations=2)
     
     # Apply Gaussian blur to feather the edges. This creates a smooth transition
     # at the borders of the mask, preventing sharp seams or ghosting outlines.
@@ -100,13 +100,13 @@ def clean_garment_image(cloth_image: Image.Image, category: str = "upper") -> Im
     
     pred_seg = upsampled_logits.argmax(dim=1)[0].numpy()
     
-    # Keep the garment fabric and arms (exclude skin, face, pants, background)
+    # Keep ONLY the garment fabric (exclude skin, face, arms, pants, background)
     if category == "upper":
-        keep_labels = [4, 7, 14, 15, 17]
+        keep_labels = [4, 7, 17]
     elif category == "lower":
         keep_labels = [5, 6, 8]
     else:
-        keep_labels = [4, 5, 6, 7, 8, 14, 15, 17]
+        keep_labels = [4, 5, 6, 7, 8, 17]
         
     binary_mask = np.zeros_like(pred_seg, dtype=np.uint8)
     for label in keep_labels:
