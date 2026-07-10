@@ -174,7 +174,7 @@ async def generate_tryon(
             # 1. Generate clothing mask using SegFormer
             print(f"Generating clothing mask for category '{category}' (preserve_arms={preserve_arms}) at resolution {target_w}x{target_h}...")
             # We resize the person image temporarily to target dimensions to run SegFormer on matching scale
-            person_image_resized = person_image.resize((target_w, target_h), Image.LANCZOS)
+            person_image_resized = person_image.resize((target_w, target_h), Image.BICUBIC)
             mask_image_resized = generate_clothing_mask(person_image_resized, category, preserve_arms)
             
             manager = ModelManager()
@@ -207,7 +207,7 @@ async def generate_tryon(
                 )
             
             # 3. Resize generated result back to original resolution and aspect ratio and save
-            result_img_resized = result_img.resize((orig_w, orig_h), Image.LANCZOS)
+            result_img_resized = result_img.resize((orig_w, orig_h), Image.BICUBIC)
             result_img_resized.save(result_path, "JPEG", quality=90)
             manager.free_memory()
         

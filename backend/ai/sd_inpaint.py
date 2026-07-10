@@ -61,6 +61,7 @@ class SDInpaintModelWrapper:
                 print(f"Warning: Could not enable VRAM optimizations for SD Inpaint: {e}")
 
 
+    @torch.inference_mode()
     def generate(
         self,
         person_image: Image.Image,

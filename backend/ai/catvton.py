@@ -36,12 +36,13 @@ class CatVTONModelWrapper(BaseTryOnModel):
             except Exception as e:
                 print(f"Warning: Could not enable VRAM optimizations: {e}")
 
+    @torch.inference_mode()
     def generate(
         self,
         person_image: Image.Image,
         cloth_image: Image.Image,
         mask_image: Image.Image,
-        num_inference_steps: int = 40, # 40 steps is usually faster and high quality
+        num_inference_steps: int = 30, # 30 steps is much faster with matching quality
         guidance_scale: float = 2.5,
         height: int = 512,
         width: int = 512,

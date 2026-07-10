@@ -128,7 +128,7 @@ class CatVTONPipeline:
             extra_step_kwargs["generator"] = generator
         return extra_step_kwargs
 
-    @torch.no_grad()
+    @torch.inference_mode()
     def __call__(
         self, 
         image: Union[PIL.Image.Image, torch.Tensor],

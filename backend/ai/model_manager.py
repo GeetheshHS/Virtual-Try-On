@@ -26,6 +26,8 @@ class ModelManager:
             
         # Detect device
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        if self.device == "cuda":
+            torch.backends.cudnn.benchmark = True
         # Optimize precision: use FP16 for CUDA to save VRAM/RAM, FP32 for CPU (since CPU lacks FP16 support for many layers)
         self.weight_dtype = torch.float16 if self.device == "cuda" else torch.float32
         
