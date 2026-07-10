@@ -64,7 +64,7 @@ def generate_clothing_mask(person_image: Image.Image, category: str = "upper", p
     
     # Apply Gaussian blur to feather the edges. This creates a smooth transition
     # at the borders of the mask, preventing sharp seams or ghosting outlines.
-    feathered_mask = cv2.GaussianBlur(dilated_mask, (9, 9), 0)
+    feathered_mask = cv2.GaussianBlur(dilated_mask, (15, 15), 0)
     
     # Convert back to PIL Image
     mask_image = Image.fromarray(feathered_mask).convert("L")
@@ -116,7 +116,7 @@ def clean_garment_image(cloth_image: Image.Image, category: str = "upper") -> Im
     dilated_mask = cv2.dilate(
         binary_mask, 
         cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5)), 
-        iterations=1
+        iterations=2
     )
     
     # Apply mask to cloth_image: set background (outside clothing) to solid white
