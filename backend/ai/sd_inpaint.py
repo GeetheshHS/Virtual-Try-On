@@ -15,7 +15,7 @@ class SDInpaintModelWrapper:
         # We reuse the same base model checkpoint and load the standard Inpaint pipeline
         # We can also load the custom VAE for consistency in generation style
         vae_exists = os.path.exists(vae_ckpt)
-        vae = AutoencoderKL.from_pretrained(vae_ckpt, local_files_only=True).to(device, dtype=torch.float32) if vae_exists else None
+        vae = AutoencoderKL.from_pretrained(vae_ckpt, local_files_only=True).to(device, dtype=weight_dtype) if vae_exists else None
         
         # Check if local checkpoint directory exists to run fully offline
         local_only = os.path.exists(base_ckpt)
