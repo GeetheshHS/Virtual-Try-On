@@ -120,8 +120,9 @@ async def generate_tryon(
         orig_w, orig_h = person_image.size
         
         # Calculate target height and width preserving the original aspect ratio.
-        # We target a maximum dimension of 768 for high-quality local GPU inference.
-        max_dim = 768
+        # We target 1024px on GPU for maximum detail and clarity, falling back to 768px on CPU.
+        import torch
+        max_dim = 1024 if torch.cuda.is_available() else 768
         if orig_w > orig_h:
             target_w = max_dim
             target_h = int(max_dim * orig_h / orig_w)
@@ -208,7 +209,7 @@ async def generate_tryon(
             
             # 3. Resize generated result back to original resolution and aspect ratio and save
             result_img_resized = result_img.resize((orig_w, orig_h), Image.BICUBIC)
-            result_img_resized.save(result_path, "JPEG", quality=90)
+            result_img_resized.save(result_path, "JPEG", quality=95)
             manager.free_memory()
         
         return {

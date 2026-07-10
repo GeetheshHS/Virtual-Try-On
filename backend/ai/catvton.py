@@ -43,7 +43,7 @@ class CatVTONModelWrapper(BaseTryOnModel):
         cloth_image: Image.Image,
         mask_image: Image.Image,
         num_inference_steps: int = 30, # 30 steps is much faster with matching quality
-        guidance_scale: float = 2.5,
+        guidance_scale: float = 3.0,
         height: int = 512,
         width: int = 512,
         **kwargs
