@@ -6,8 +6,7 @@ import {
   Shirt, 
   AlertTriangle,
   RotateCcw,
-  Sliders,
-  HelpCircle
+  Sliders
 } from "lucide-react";
 import ImageUpload from "../components/ImageUpload";
 import WebcamCapture from "../components/WebcamCapture";
@@ -28,7 +27,6 @@ export function Home() {
   const [clothFile, setClothFile] = useState(null);
   const [clothPreview, setClothPreview] = useState(null);
   const [category, setCategory] = useState("upper");
-  const [prompt, setPrompt] = useState("");
   const [preserveArms, setPreserveArms] = useState(true);
 
   // Processing states
@@ -43,6 +41,7 @@ export function Home() {
 
   // Mode is always local system
   const mode = "system";
+  const prompt = "";
 
   // Handle webcam capture
   const handleWebcamCapture = (file, previewUrl) => {
@@ -69,7 +68,6 @@ export function Home() {
     setPersonPreview(null);
     setClothFile(null);
     setClothPreview(null);
-    setPrompt("");
     setPreserveArms(true);
     setResultId(null);
     setResultUrl(null);
@@ -275,25 +273,7 @@ export function Home() {
 
 
 
-            {/* Prompt Textbox */}
-            <div className="flex flex-col gap-2">
-              <div className="flex justify-between items-center">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">
-                  Clothing Modifications <span className="text-xs text-slate-400 dark:text-slate-500">(Optional)</span>
-                </label>
-              </div>
-              <textarea
-                value={prompt}
-                onChange={(e) => setPrompt(e.target.value)}
-                placeholder="E.g. Change shirt to black, Add stripes, Make fabric denim..."
-                rows={3}
-                className="w-full text-sm p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 placeholder-slate-400 outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all resize-none shadow-sm"
-              />
-              <p className="text-[10px] text-slate-400 dark:text-slate-500 flex items-start gap-1">
-                <HelpCircle className="w-3.5 h-3.5 flex-shrink-0 stroke-[1.8]" />
-                Leave empty to do a standard Try-On of the uploaded garment. Provide a text prompt to perform custom modifications using SD Inpaint.
-              </p>
-            </div>
+
 
             {/* Generate Action Button */}
             <button
