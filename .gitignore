@@ -1,0 +1,49 @@
+# Python virtual environment
+backend/venv/
+venv/
+ENV/
+env/
+
+# Downloaded ML models (extremely large: ~6GB)
+backend/models/
+models/
+
+# App uploads and generated outputs
+backend/uploads/person_*
+backend/uploads/cloth_*
+backend/uploads/clean_cloth_*
+backend/outputs/result_*
+uploads/
+outputs/
+
+# Python cache / logs
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+*.log
+
+# Frontend dependencies and builds
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+node_modules/
+dist/
+
+# OS/Editor configs
+.DS_Store
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
