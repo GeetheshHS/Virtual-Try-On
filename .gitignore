@@ -9,10 +9,10 @@ backend/models/
 models/
 
 # App uploads and generated outputs
-backend/uploads/person_*
-backend/uploads/cloth_*
-backend/uploads/clean_cloth_*
-backend/outputs/result_*
+backend/uploads/*
+!backend/uploads/.gitkeep
+backend/outputs/*
+!backend/outputs/.gitkeep
 uploads/
 outputs/
 
