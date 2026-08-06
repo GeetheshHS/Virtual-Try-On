@@ -1,6 +1,6 @@
-# AuraTryOn: AI-Powered Local Virtual Try-On Studio
+# Virtual Try-On: AI-Powered Local Virtual Try-On Studio
 
-AuraTryOn is a production-quality, 100% local, AI-powered Virtual Try-On web application. It combines a responsive React frontend (Vite + Tailwind CSS) with a FastAPI backend (Python + PyTorch + Diffusers) to perform virtual garment dressing and text-guided clothing modifications locally without relying on external cloud APIs or requiring API keys.
+The virtual try on is a production-quality, 100% local, AI-powered Virtual Try-On web application. It combines a responsive React frontend (Vite + Tailwind CSS) with a FastAPI backend (Python + PyTorch + Diffusers) to perform virtual garment dressing and text-guided clothing modifications locally without relying on external cloud APIs or requiring API keys.
 
 ---
 
@@ -142,7 +142,7 @@ uvicorn app:app --reload --host 127.0.0.1 --port 8000
 FastAPI will run on `http://localhost:8000`. Swagger docs are available on `http://localhost:8000/docs`.
 
 ### 2. Open Frontend:
-Navigate your browser to `http://localhost:5173` to interact with AuraTryOn.
+Navigate your browser to `http://localhost:5173` to interact with the virtual try on.
 
 ---
 

@@ -162,7 +162,7 @@ export function Home() {
             <Shirt className="w-6 h-6 stroke-[1.8]" />
           </div>
           <div>
-            <h1 className="font-bold text-xl tracking-tight text-slate-905 dark:text-white">AuraTryOn</h1>
+            <h1 className="font-bold text-xl tracking-tight text-slate-905 dark:text-white">Virtual Try-On</h1>
             <p className="text-xs text-slate-400 dark:text-slate-500">Local AI Virtual Try-On Studio</p>
           </div>
         </div>
